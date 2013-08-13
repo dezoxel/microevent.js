@@ -1,0 +1,12 @@
+{
+  "name": "microevent",
+  "version": "1.0.0",
+  "main": "microevent.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
