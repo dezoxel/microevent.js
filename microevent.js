@@ -52,3 +52,10 @@ MicroEvent.mixin	= function(destObject){
 if( typeof module !== "undefined" && ('exports' in module)){
 	module.exports	= MicroEvent;
 }
+
+// AMD support
+if( typeof define !== "undefined"){
+    define([], function(){
+        return MicroEvent; 
+    });
+}
