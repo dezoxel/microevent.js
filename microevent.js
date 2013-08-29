@@ -1,6 +1,6 @@
 /**
  * MicroEvent - to make any js object an event emitter (server or browser)
- * 
+ *
  * - pure javascript - server compatible, browser compatible
  * - dont rely on the browser doms
  * - super simple - you get it immediatly, no mistery, no magic involved
@@ -19,7 +19,12 @@ MicroEvent.prototype	= {
 	unbind	: function(event, fct){
 		this._events = this._events || {};
 		if( event in this._events === false  )	return;
-		this._events[event].splice(this._events[event].indexOf(fct), 1);
+		var indexOfFunc = this._events[event].indexOf(fct);
+		if(indexOfFunc !== -1) {
+			this._events[event].splice(indexOfFunc, 1);
+		} else {
+			this._events[event] = [];
+		}
 	},
 	trigger	: function(event /* , args... */){
 		this._events = this._events || {};
@@ -55,7 +60,7 @@ if( typeof module !== "undefined" && ('exports' in module)){
 
 // AMD support
 if( typeof define !== "undefined"){
-    define([], function(){
-        return MicroEvent; 
-    });
+		define([], function(){
+				return MicroEvent;
+		});
 }
