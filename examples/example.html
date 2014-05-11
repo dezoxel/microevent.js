@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html> 
-<head></head> 
+<html>
+<head></head>
 <body>
 	<script src="../microevent.js"></script>
 	<script>
@@ -17,7 +17,7 @@
 		* make Ticker support MicroEventjs
 		*/
 		MicroEvent.mixin(Ticker);
-		
+
 		// create a ticker
 		var ticker = new Ticker();
 		// bind the 'tick' event
@@ -25,6 +25,14 @@
 			// display to check
 			console.log('notified data'+ date);
 		});
+
+		ticker.one('herp', function(data) {
+		    console.log('derp', data);
+		});
+
+		ticker.trigger('herp', 'blurp'); // Callback is fired.
+		ticker.trigger('herp', 'blurp'); // Callback is not fired.
+
 	</script>
-</body> 
-</html> 
+</body>
+</html>

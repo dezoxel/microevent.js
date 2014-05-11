@@ -56,6 +56,17 @@ And you will see this output:
     notified date Tue, 22 Mar 2011 14:43:41 GMT
     notified date Tue, 22 Mar 2011 14:43:42 GMT
     ...
+    
+You can also bind events via the `one()` method. Events bound in this manner will be called at most once and the automatically discarded.
+
+```javascript
+ticker.one('herp', function(data) {
+	console.log('derp', data);
+});
+
+ticker.trigger('herp'); // Callback is fired.
+ticker.trigger('herp'); // Callback is not fired.
+```
 
 ## Conclusion
 
